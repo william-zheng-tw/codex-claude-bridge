@@ -14,6 +14,7 @@ If this helps your Codex workflow, starring the repository helps other developer
 
 Helpful links:
 
+- [Roadmap](ROADMAP.md)
 - [Use cases](docs/USE_CASES.md)
 - [Latest release](https://github.com/william-zheng-tw/codex-claude-bridge/releases/latest)
 
@@ -72,6 +73,8 @@ This bridge is intentionally read-only:
 - Secret-like assignments are redacted when detected.
 
 Treat Claude's output as external advice, not ground truth.
+
+For a directional roadmap toward deeper collaboration, including patch validation, review-after-apply loops, and sandbox proposal exploration, see the [roadmap](ROADMAP.md). The roadmap keeps the same boundary: Claude may propose, but Codex decides and operates.
 
 ## Requirements
 
@@ -248,6 +251,7 @@ You should review it first. This project deliberately treats Claude as an adviso
 ├── CONTRIBUTING.md
 ├── docs/
 │   └── USE_CASES.md
+├── ROADMAP.md
 ├── SKILL.md
 ├── scripts/
 │   └── claude_code_bridge.py
@@ -270,6 +274,7 @@ Codex Claude Bridge 是一個 Codex skill，讓 Codex 可以向本機的 Claude 
 
 相關連結：
 
+- [Roadmap](ROADMAP.md)
 - [使用情境](docs/USE_CASES.md)
 - [Latest release](https://github.com/william-zheng-tw/codex-claude-bridge/releases/latest)
 
@@ -328,6 +333,8 @@ python3 scripts/claude_code_bridge.py setup
 - 偵測到疑似 secret assignment 時會嘗試遮蔽。
 
 Claude 的建議應被視為外部意見，而不是事實來源。
+
+若想了解未來如何往更深度的協作前進，例如 patch 驗證、套用後 review loop，以及 sandbox proposal 探索，請見 [roadmap](ROADMAP.md)。roadmap 仍維持同一條邊界：Claude 可以提出建議，但由 Codex 判斷並執行。
 
 ## 需求
 
@@ -504,6 +511,7 @@ command -v claude
 ├── CONTRIBUTING.md
 ├── docs/
 │   └── USE_CASES.md
+├── ROADMAP.md
 ├── SKILL.md
 ├── scripts/
 │   └── claude_code_bridge.py
