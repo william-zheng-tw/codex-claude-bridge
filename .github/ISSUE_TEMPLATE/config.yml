@@ -1,0 +1,5 @@
+blank_issues_enabled: true
+contact_links:
+  - name: Questions and workflow ideas
+    url: https://github.com/william-zheng-tw/codex-claude-bridge/discussions
+    about: Use Discussions for questions, examples, and workflow ideas.

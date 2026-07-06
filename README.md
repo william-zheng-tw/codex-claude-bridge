@@ -1,16 +1,44 @@
 # Codex Claude Bridge
 
+[![GitHub release](https://img.shields.io/github/v/release/william-zheng-tw/codex-claude-bridge?display_name=tag)](https://github.com/william-zheng-tw/codex-claude-bridge/releases)
+[![License](https://img.shields.io/github/license/william-zheng-tw/codex-claude-bridge)](LICENSE)
+[![GitHub stars](https://img.shields.io/github/stars/william-zheng-tw/codex-claude-bridge?style=social)](https://github.com/william-zheng-tw/codex-claude-bridge/stargazers)
+
 Language: [English](#english) | [繁體中文](#繁體中文)
 
 ## English
 
 Codex Claude Bridge is a Codex skill that lets Codex ask the local Claude Code CLI for a read-only second opinion, code review, adversarial review, or proposed diff.
 
+If this helps your Codex workflow, starring the repository helps other developers discover it.
+
+Helpful links:
+
+- [Use cases](docs/USE_CASES.md)
+- [Latest release](https://github.com/william-zheng-tw/codex-claude-bridge/releases/latest)
+
 The project has one clear boundary:
 
 - Codex is the operator. It reads files, edits files, runs commands, and decides what to do.
 - Claude is the advisor. It provides read-only feedback.
 - Claude does not directly modify your files or run follow-up commands.
+
+## Why This Exists
+
+Codex is great at operating inside a repository, but sometimes you want a second model to challenge a change before Codex applies it. This skill makes that review loop lightweight: Codex can ask local Claude Code for focused feedback while keeping Claude read-only.
+
+Use it when you want another perspective on correctness, edge cases, rollback risk, data-loss risk, or whether a proposed patch can be smaller.
+
+## Copy-Paste Install
+
+```bash
+mkdir -p ~/.codex/skills
+git clone https://github.com/william-zheng-tw/codex-claude-bridge.git ~/.codex/skills/codex-claude-bridge
+cd ~/.codex/skills/codex-claude-bridge
+python3 scripts/claude_code_bridge.py setup
+```
+
+Restart Codex or open a new Codex session after installing.
 
 ## What This Solves
 
@@ -81,7 +109,7 @@ This repository also includes a packaged skill file:
 dist/codex-claude-bridge.skill
 ```
 
-If your Codex environment supports importing `.skill` files, use that file directly. You can also unzip it manually:
+You can download it from the [latest release](https://github.com/william-zheng-tw/codex-claude-bridge/releases/latest). If your Codex environment supports importing `.skill` files, use that file directly. You can also unzip it manually:
 
 ```bash
 mkdir -p ~/.codex/skills
@@ -203,10 +231,23 @@ Use `ask` for general questions that do not need git context.
 
 You should review it first. This project deliberately treats Claude as an advisor because any model can misunderstand the context. Let Codex or a human review the suggestion before applying it.
 
+## Community
+
+- Open an issue for bugs or installation problems.
+- Start a GitHub Discussion for questions, workflow ideas, or usage stories.
+- Share the repo with a concrete use case, such as "Codex asks Claude for a read-only adversarial review before I apply a patch."
+
 ## Project Structure
 
 ```text
 .
+├── .github/
+│   └── ISSUE_TEMPLATE/
+├── assets/
+│   └── social-preview.png
+├── CONTRIBUTING.md
+├── docs/
+│   └── USE_CASES.md
 ├── SKILL.md
 ├── scripts/
 │   └── claude_code_bridge.py
@@ -225,11 +266,35 @@ See [`LICENSE`](LICENSE).
 
 Codex Claude Bridge 是一個 Codex skill，讓 Codex 可以向本機的 Claude Code CLI 詢問唯讀的第二意見、程式碼審查、對抗式審查，或請 Claude 提出 diff 建議。
 
+如果這個工具有幫到你的 Codex workflow，幫 repo 按 star 可以讓更多開發者發現它。
+
+相關連結：
+
+- [使用情境](docs/USE_CASES.md)
+- [Latest release](https://github.com/william-zheng-tw/codex-claude-bridge/releases/latest)
+
 這個專案的邊界很清楚：
 
 - Codex 是操作者，負責讀檔、改檔、執行命令與判斷結果。
 - Claude 是顧問，只提供唯讀建議。
 - Claude 不會直接修改你的檔案，也不會替你執行後續命令。
+
+## 為什麼需要這個工具
+
+Codex 很適合在 repo 裡執行操作，但有時候你會希望另一個模型在套用變更前先挑戰一次。這個 skill 讓 Codex 可以輕量地詢問本機 Claude Code，同時保持 Claude 唯讀。
+
+適合用在你想多看一次 correctness、edge cases、rollback 風險、資料遺失風險，或想確認 patch 是否能更小的時候。
+
+## 複製貼上安裝
+
+```bash
+mkdir -p ~/.codex/skills
+git clone https://github.com/william-zheng-tw/codex-claude-bridge.git ~/.codex/skills/codex-claude-bridge
+cd ~/.codex/skills/codex-claude-bridge
+python3 scripts/claude_code_bridge.py setup
+```
+
+安裝後請重新開啟 Codex，或開一個新的 Codex session。
 
 ## 這個專案解決什麼問題
 
@@ -300,7 +365,7 @@ git clone https://github.com/william-zheng-tw/codex-claude-bridge.git ~/.codex/s
 dist/codex-claude-bridge.skill
 ```
 
-如果你的 Codex 環境支援從 `.skill` 匯入，可以直接使用這個檔案。你也可以手動解開到 skills 目錄：
+你可以從 [latest release](https://github.com/william-zheng-tw/codex-claude-bridge/releases/latest) 下載。如果你的 Codex 環境支援從 `.skill` 匯入，可以直接使用這個檔案。你也可以手動解開到 skills 目錄：
 
 ```bash
 mkdir -p ~/.codex/skills
@@ -422,10 +487,23 @@ command -v claude
 
 不建議直接套用。這個專案刻意把 Claude 定位成顧問，因為任何模型都可能誤判上下文。請讓 Codex 或你自己先 review Claude 的建議，再決定是否採納。
 
+## 社群
+
+- bug 或安裝問題可以開 issue。
+- 使用問題、workflow 想法、實際案例可以開 GitHub Discussion。
+- 分享時建議帶具體使用情境，例如「Codex 套 patch 前，先請 Claude 做唯讀對抗式 review」。
+
 ## 專案結構
 
 ```text
 .
+├── .github/
+│   └── ISSUE_TEMPLATE/
+├── assets/
+│   └── social-preview.png
+├── CONTRIBUTING.md
+├── docs/
+│   └── USE_CASES.md
 ├── SKILL.md
 ├── scripts/
 │   └── claude_code_bridge.py
